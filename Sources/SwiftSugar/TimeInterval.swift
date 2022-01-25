@@ -1,6 +1,6 @@
 import Foundation
 
-extension TimeInterval {
+public extension TimeInterval {
     var hours: Int {
         Int(self) / 3600
     }
