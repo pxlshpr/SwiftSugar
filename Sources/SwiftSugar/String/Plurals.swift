@@ -30,7 +30,7 @@ let Plurals: [String: String] = [
 ]
 
 
-extension String {
+public extension String {
     var plural: String {
         let string: String
         
@@ -57,9 +57,7 @@ extension String {
             return string
         }
     }
-}
-
-extension String {
+    
     func pluralizedFor(_ amount: Double) -> String {
         let rounded = amount.rounded(toPlaces: amount < 1 ? 2 : 1)
         if rounded >= 2 {
