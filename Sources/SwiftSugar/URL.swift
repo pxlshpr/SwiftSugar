@@ -8,6 +8,10 @@ public extension URL {
     static func documentsContents(withExtension fileExtension: String) -> [URL] {
         documents.directoryContents.filter{ $0.pathExtension == fileExtension }
     }
+    
+    static var documentsContents: [URL] {
+        documents.directoryContents
+    }
 }
 
 public extension URL {
