@@ -6,18 +6,26 @@ public extension URL {
     }
 
     static func documentsContents(withExtension fileExtension: String) -> [URL] {
-        documents.contents.filter{ $0.pathExtension == fileExtension }
+        documents.directoryContents.filter{ $0.pathExtension == fileExtension }
     }
 }
 
 public extension URL {
-    var contents: [URL] {
+    var directoryContents: [URL] {
         do {
             let files = try FileManager.default.contentsOfDirectory(at: self, includingPropertiesForKeys: nil)
             return files
         } catch {
             print("Error getting directory contents: \(error)")
             return []
+        }
+    }
+    
+    var fileContents: String {
+        do {
+            return try String(contentsOf: self, encoding: .utf8)
+        } catch {
+            fatalError("Error reading files: \(error)")
         }
     }
 }
