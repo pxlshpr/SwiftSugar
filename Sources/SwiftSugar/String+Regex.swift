@@ -10,7 +10,7 @@ public extension String {
 
 public extension String {
     
-    func extractCapturedGroups(using format: String, caseSensitive: Bool = false) -> [String] {
+    func capturedGroups(using format: String, caseSensitive: Bool = false) -> [String] {
         let range = NSRange(
             startIndex..<endIndex,
             in: self
@@ -53,12 +53,12 @@ public extension String {
         return captureGroups
     }
     
-    func extractFirstCapturedGroup(using format: String, caseSensitive: Bool = false) -> String? {
-        return extractCapturedGroups(using: format, caseSensitive: caseSensitive).first
+    func firstCapturedGroup(using format: String, caseSensitive: Bool = false) -> String? {
+        return capturedGroups(using: format, caseSensitive: caseSensitive).first
     }
     
-    func extractSecondCapturedGroup(using format: String, caseSensitive: Bool = false) -> String? {
-        let groups = extractCapturedGroups(using: format, caseSensitive: caseSensitive)
+    func secondCapturedGroup(using format: String, caseSensitive: Bool = false) -> String? {
+        let groups = capturedGroups(using: format, caseSensitive: caseSensitive)
         guard groups.count > 1 else { return nil }
         return groups[1]
     }
