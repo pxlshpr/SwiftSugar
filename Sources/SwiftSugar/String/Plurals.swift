@@ -1,6 +1,6 @@
 import Foundation
 
-let Plurals: [String: String] = [
+public let Plurals: [String: String] = [
     "berry": "berries",
     "bottle": "bottles",
     "box": "boxes",
