@@ -1,6 +1,6 @@
 import Foundation
 
-extension String {
+public extension String {
     
     var dateFromTimestamp: Date? {
         guard let timeInterval = TimeInterval(self) else {

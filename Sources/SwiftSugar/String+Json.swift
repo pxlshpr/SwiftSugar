@@ -1,6 +1,6 @@
 import Foundation
 
-extension String {
+public extension String {
     
     var asJson: [String: Any]? {
         guard let data = data(using: .utf8)
