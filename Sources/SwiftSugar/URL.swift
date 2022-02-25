@@ -5,8 +5,8 @@ public extension URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
 
-    static func documentsContents(withExtension fileExtension: String) -> [URL] {
-        documents.directoryContents.filter{ $0.pathExtension == fileExtension }
+    static func documentsContents(withExtension pathExtension: String) -> [URL] {
+        documents.directoryContents(withExtension: pathExtension)
     }
     
     static var documentsContents: [URL] {
@@ -23,6 +23,10 @@ public extension URL {
             print("Error getting directory contents: \(error)")
             return []
         }
+    }
+    
+    func directoryContents(withExtension pathExtension: String) -> [URL] {
+        directoryContents.filter({ $0.pathExtension == pathExtension })
     }
     
     var fileContents: String {
