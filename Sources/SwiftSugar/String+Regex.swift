@@ -1,7 +1,7 @@
 import Foundation
 
-
 public extension String {
+    
     func matchesRegex(_ regex: String, caseSensitive: Bool = false) -> Bool {
         let options: String.CompareOptions = caseSensitive ? [.regularExpression] : [.regularExpression, .caseInsensitive]
         return range(of: regex, options: options, range: nil, locale: nil) != nil
