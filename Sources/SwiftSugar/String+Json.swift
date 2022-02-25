@@ -2,7 +2,7 @@ import Foundation
 
 public extension String {
     
-    var asJson: [String: Any]? {
+    public var asJson: [String: Any]? {
         guard let data = data(using: .utf8)
         else {
             print("Error: Couldn't scrape JSON object from string: \(self)")
