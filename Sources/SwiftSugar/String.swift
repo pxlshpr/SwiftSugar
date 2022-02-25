@@ -2,7 +2,7 @@ import Foundation
 
 public extension String {
     
-    var htmlContentsFromUrlString: String? {
+    var htmlContents: String? {
         guard let url = URL(string: self) else {
             print("Error: Couldn't form URL from string: \(self)")
             return nil
@@ -16,7 +16,7 @@ public extension String {
         }
     }
 
-    var jsonContentsFromJsonString: [String: Any]? {
+    var asJson: [String: Any]? {
         guard let data = data(using: .utf8)
         else {
             print("Error: Couldn't scrape JSON object from string: \(self)")
