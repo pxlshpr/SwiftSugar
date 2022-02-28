@@ -12,12 +12,22 @@ public let Plurals: [String: String] = [
     "fluid ounce": "fluid ounces",
     
     "gallon": "gallons",
+    "gram": "grams",
     "gummy": "gummies",
     
+    "kilogram": "kilograms",
+    
+    "milliliter": "milliliters",
+    "millilitre": "millilitres",
+    "milligram": "milligrams",
+    
+    "ounce": "ounces",
+
     "pack": "packs",
     "package": "packages",
     "piece": "pieces",
     "pint": "pints",
+    "pound": "pounds",
     
     "quart": "quarts",
     
