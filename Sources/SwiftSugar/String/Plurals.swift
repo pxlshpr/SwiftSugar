@@ -24,6 +24,7 @@ public let Plurals: [String: String] = [
     "scoop": "scoops",
     "serving": "servings",
     "slice": "slices",
+    "strip": "strips",
     
     "tablespoon": "tablespoons",
     "teaspoon": "teaspoons",
