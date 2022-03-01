@@ -42,6 +42,13 @@ public let Plurals: [String: String] = [
 
 
 public extension String {
+    var singular: String {
+        if let entry = Plurals.first(where: { $0.value == self.lowercased() }) {
+            return entry.key
+        }
+        return self
+    }
+    
     var plural: String {
         let string: String
         
