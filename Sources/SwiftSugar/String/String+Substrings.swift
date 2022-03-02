@@ -1,6 +1,6 @@
 import Foundation
 
-extension String {
+public extension String {
     func replacingLastOccurrence(of searchString: String,
             with replacementString: String,
             caseInsensitive: Bool = false) -> String
