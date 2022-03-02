@@ -12,10 +12,6 @@ public extension Double {
         }
     }
 
-    var clean_legacy: String {
-       return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
-    }
-
     var cleanWithoutRounding: String {
         return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
@@ -23,5 +19,31 @@ public extension Double {
     func rounded(toPlaces places: Int) -> Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
+    }
+    
+    var cleanAmount: String {
+        if self.truncatingRemainder(dividingBy: 1) == 0 {
+            return String(format: "%.0f", self.rounded(toPlaces: 2))
+        } else {
+            let value = self.rounded(toPlaces: 1)
+            if value.truncatingRemainder(dividingBy: 1) == 0 {
+                return String(Int(value))
+            } else {
+                return String(value)
+            }
+        }
+    }
+
+    //MARK: - Legacy
+    var clean_legacy: String {
+       return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+    }
+    
+    var clean_legacy2: String {
+        if self.truncatingRemainder(dividingBy: 1) == 0 {
+            return String(format: "%.0f", self.rounded(toPlaces: 2))
+        } else {
+            return String(self.rounded(toPlaces: 2))
+        }
     }
 }

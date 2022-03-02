@@ -86,3 +86,10 @@ public extension String {
         }
     }
 }
+
+extension String {
+    
+    var pluralEntry: Dictionary<String, String>.Element? {
+        Plurals.first(where: { $0.key == self || $0.value == self })
+    }
+}
