@@ -33,6 +33,7 @@ public let Plurals: [String: String] = [
     
     "scoop": "scoops",
     "serving": "servings",
+    "size": "sizes",
     "slice": "slices",
     "strip": "strips",
     
