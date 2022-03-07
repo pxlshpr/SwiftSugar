@@ -34,6 +34,10 @@ public extension String {
             return string
         }
     }
+
+    func pluralizedFor(_ amount: Int) -> String {
+        pluralizedFor(Double(amount))
+    }
     
     func pluralizedFor(_ amount: Double) -> String {
         let rounded = amount.rounded(toPlaces: amount < 1 ? 2 : 1)
