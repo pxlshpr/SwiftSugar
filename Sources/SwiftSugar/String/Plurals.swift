@@ -1,6 +1,7 @@
 import Foundation
 
 public let Plurals: [String: String] = [
+    "ball": "balls",
     "berry": "berries",
     "bottle": "bottles",
     "box": "boxes",
@@ -8,6 +9,9 @@ public let Plurals: [String: String] = [
     "container": "containers",
     "cookie": "cookies",
     "cup": "cups",
+    
+    "donut": "donuts",
+    "doughnut": "doughnuts",
     
     "fluid ounce": "fluid ounces",
     
@@ -17,10 +21,13 @@ public let Plurals: [String: String] = [
     
     "kilogram": "kilograms",
     
+    "leaf": "leaves",
+    
     "milliliter": "milliliters",
     "millilitre": "millilitres",
     "milligram": "milligrams",
     
+    "orange": "oranges",
     "ounce": "ounces",
 
     "pack": "packs",
@@ -31,6 +38,7 @@ public let Plurals: [String: String] = [
     
     "quart": "quarts",
     
+    "sandwich": "sandwiches",
     "scoop": "scoops",
     "serving": "servings",
     "size": "sizes",
@@ -39,4 +47,7 @@ public let Plurals: [String: String] = [
     
     "tablespoon": "tablespoons",
     "teaspoon": "teaspoons",
+    "triangle": "triangles",
+    
+    "wrap": "wraps"
 ]
