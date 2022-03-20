@@ -1,10 +1,28 @@
 import Foundation
 
+public extension StringProtocol {
+    var byWords: [SubSequence] {
+        var byWords: [SubSequence] = []
+        enumerateSubstrings(in: startIndex..., options: .byWords) { _, range, _, _ in
+            byWords.append(self[range])
+        }
+        return byWords
+    }
+}
+
 public extension String {
+    
     var singular: String {
         if let entry = Plurals.first(where: { $0.value == self.lowercased() }) {
             return entry.key
         }
+        
+        /// check if we have multiple words and if the last word can be made singular
+        if byWords.count > 1, let lastWord = byWords.last {
+            return String(lastWord).singular
+        }
+        
+        /// return the original string if all else fails
         return self
     }
     
