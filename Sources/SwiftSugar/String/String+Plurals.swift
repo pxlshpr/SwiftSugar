@@ -13,12 +13,15 @@ public extension StringProtocol {
 public extension String {
     
     func pluralized(_ plural: Bool) -> String {
+        let RxWithParentheses = #"(.*)(\(.*\))"#
         /// if we have a word like "baked doughnuts (large)", only grab "baked" doughnuts", get its singular version and replace it
-        if let withoutParentheses = firstCapturedGroup(using: #"(.*)[ ]*\(.*\)"#) {
-            return self.replacingLastOccurrence(
-                of: withoutParentheses,
-                with: withoutParentheses.trimmingCharacters(in: .whitespaces).pluralized(plural)
-            )
+        if let toPluralize = firstCapturedGroup(using: RxWithParentheses),
+            let suffix = secondCapturedGroup(using: RxWithParentheses)
+        {
+            let pluralized = toPluralize
+                .trimmingCharacters(in: .whitespaces)
+                .pluralized(plural)
+            return "\(pluralized) \(suffix)"
         }
         
         /// try and get the entry for the entire word itself
