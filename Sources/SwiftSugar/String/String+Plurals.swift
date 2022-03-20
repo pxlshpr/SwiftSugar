@@ -45,7 +45,7 @@ public extension String {
             return self.plural
 //            return "\(self)s"
         } else {
-            return self
+            return self.singular
         }
     }
     
