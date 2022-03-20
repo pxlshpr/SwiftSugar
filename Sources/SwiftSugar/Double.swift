@@ -25,7 +25,7 @@ public extension Double {
         if self.truncatingRemainder(dividingBy: 1) == 0 {
             return String(format: "%.0f", self.rounded(toPlaces: 2))
         } else {
-            let value = self.rounded(toPlaces: 1)
+            let value = self.rounded(toPlaces: self > 1 ? 1 : 2)
             if value.truncatingRemainder(dividingBy: 1) == 0 {
                 return String(Int(value))
             } else {
