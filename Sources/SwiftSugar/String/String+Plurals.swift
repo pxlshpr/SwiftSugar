@@ -17,7 +17,7 @@ public extension String {
         if let withoutParentheses = firstCapturedGroup(using: #"(.*)[ ]*\(.*\)"#) {
             return self.replacingLastOccurrence(
                 of: withoutParentheses,
-                with: withoutParentheses.pluralized(plural)
+                with: withoutParentheses.trimmingCharacters(in: .whitespaces).pluralized(plural)
             )
         }
         
