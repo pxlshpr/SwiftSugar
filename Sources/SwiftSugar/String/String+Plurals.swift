@@ -19,7 +19,7 @@ public extension String {
         
         /// check if we have multiple words and if the last word can be made singular
         if byWords.count > 1, let lastWord = byWords.last {
-            return self.replacingLastOccurrence(of: lastWord,
+            return self.replacingLastOccurrence(of: String(lastWord),
                                                 with: String(lastWord).singular)
         }
         
