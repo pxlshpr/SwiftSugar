@@ -14,7 +14,8 @@ public let Plurals: [String: String] = [
     "doughnut": "doughnuts",
     
     "fluid ounce": "fluid ounces",
-    
+    "food": "foods",
+
     "gallon": "gallons",
     "gram": "grams",
     "gummy": "gummies",
@@ -32,11 +33,14 @@ public let Plurals: [String: String] = [
 
     "pack": "packs",
     "package": "packages",
+    "plate": "plates",
     "piece": "pieces",
     "pint": "pints",
     "pound": "pounds",
     
     "quart": "quarts",
+    
+    "recipe": "recipes",
     
     "sandwich": "sandwiches",
     "scoop": "scoops",
