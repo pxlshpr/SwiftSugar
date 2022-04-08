@@ -22,18 +22,42 @@ public extension Double {
     }
     
     var cleanAmount: String {
+        guard self != 0 else {
+            return "0"
+        }
+        
         if self.truncatingRemainder(dividingBy: 1) == 0 {
             return String(format: "%.0f", self.rounded(toPlaces: 2))
         } else {
-//            let value = self.rounded(toPlaces: self > 1 ? 1 : 2)
-            let value = self.rounded(toPlaces: 2)
-            if value.truncatingRemainder(dividingBy: 1) == 0 {
-                return String(Int(value))
-            } else {
-                return String(value)
+            /// Keep trying till we reach 5 decimal places
+            for decimalPlaces in 2..<6 {
+                let value = self.rounded(toPlaces: decimalPlaces)
+                guard value != 0 else {
+                    continue
+                }
+                if value.truncatingRemainder(dividingBy: 1) == 0 {
+                    return String(Int(value))
+                } else {
+                    return String(value)
+                }
             }
+            return "0"
         }
     }
+    
+//    var cleanAmount: String {
+//        if self.truncatingRemainder(dividingBy: 1) == 0 {
+//            return String(format: "%.0f", self.rounded(toPlaces: 2))
+//        } else {
+////            let value = self.rounded(toPlaces: self > 1 ? 1 : 2)
+//            let value = self.rounded(toPlaces: 2)
+//            if value.truncatingRemainder(dividingBy: 1) == 0 {
+//                return String(Int(value))
+//            } else {
+//                return String(value)
+//            }
+//        }
+//    }
 
     //MARK: - Legacy
     var clean_legacy: String {
