@@ -21,4 +21,9 @@ public extension String {
         }
         return self
     }
+    
+    func replacingFirstOccurrence(of target: String, with replacement: String) -> String {
+        guard let range = self.range(of: target) else { return self }
+        return self.replacingCharacters(in: range, with: replacement)
+    }
 }
