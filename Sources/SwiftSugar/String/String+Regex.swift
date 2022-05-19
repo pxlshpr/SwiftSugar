@@ -10,20 +10,20 @@ public extension String {
 
 public extension String {
     
-    func capturedGroups(using format: String, caseSensitive: Bool = false) -> [String] {
+    func capturedGroups(using format: String, caseSensitive: Bool = false, allowCapturingEntireString: Bool = false) -> [String] {
         let range = NSRange(
             startIndex..<endIndex,
             in: self
         )
 
-        // Create A NSRegularExpression
+        /// Create A NSRegularExpression
         let capturePattern = format
         let captureRegex = try! NSRegularExpression(
             pattern: capturePattern,
             options: caseSensitive ? [] : [.caseInsensitive]
         )
         
-        // Find the matching capture groups
+        /// Find the matching capture groups
         let matches = captureRegex.matches(
             in: self,
             options: [],
@@ -36,14 +36,16 @@ public extension String {
         
         var captureGroups: [String] = []
 
-        // For each matched range, extract the capture group
+        /// For each matched range, extract the capture group
         for rangeIndex in 0..<match.numberOfRanges {
             let matchRange = match.range(at: rangeIndex)
             
-            // Ignore matching the entire username string
-            if matchRange == range { continue }
+            /// Ignore matching the entire string unless specified to do so
+            if !allowCapturingEntireString && matchRange == range {
+                continue
+            }
             
-            // Extract the substring matching the capture group
+            /// Extract the substring matching the capture group
             if let substringRange = Range(matchRange, in: self) {
                 let capture = String(self[substringRange])
                 captureGroups.append(capture)
