@@ -143,5 +143,33 @@ public extension Date {
         }
         return formatter.string(from: self)
     }
+    
+    var shortTime: String {
+        let calendar = Calendar.current
+        let minutes = calendar.component(.minute, from: self)
+        
+        let formatter = DateFormatter()
+        if minutes == 0 {
+            formatter.dateFormat = "h a"
+        } else {
+            formatter.dateFormat = "h:mm a"
+        }
+        return formatter.string(from: self).lowercased()
+    }
 }
 
+public func date(hour: Int, minute: Int = 0, of date: Date = Date()) -> Date {
+    guard hour < 48 else { return date }
+    let actualDate: Date
+    let actualHour: Int
+    if hour > 23 {
+        actualHour = hour - 24
+        actualDate = date.addingTimeInterval(24 * 3600)
+    } else {
+        actualHour = hour
+        actualDate = date
+    }
+    return Calendar.current.date(bySettingHour: actualHour,
+                                 minute: minute,
+                                 second: 0, of: actualDate)!
+}

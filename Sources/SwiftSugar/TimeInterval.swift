@@ -19,6 +19,7 @@ public extension TimeInterval {
         self / 3600.0
     }
 
+    //TODO: Rename to description
     var stringTime: String {
         let min = minutes > 1 ? "mins" : "min"
         if hours != 0 {
@@ -32,6 +33,24 @@ public extension TimeInterval {
             return "\(minutes) \(min)"
         } else {
             return "<1 min"
+        }
+    }
+}
+
+public extension TimeInterval {
+
+    //TODO: Rename to shortDescription
+    var shortStringTime: String {
+        if hours != 0 {
+            if minutes > 0 {
+                return "\(hoursAsDouble.rounded(toPlaces: 1))h"
+            } else {
+                return "\(hours)h"
+            }
+        } else if minutes != 0 {
+            return "\(minutes)m"
+        } else {
+            return "<1m"
         }
     }
 }
