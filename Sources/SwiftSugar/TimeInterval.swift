@@ -43,7 +43,7 @@ public extension TimeInterval {
     var shortStringTime: String {
         if hours != 0 {
             if minutes > 0 {
-                return "\(hoursAsDouble.rounded(toPlaces: 1))h"
+                return "\(hoursAsDouble.rounded(toPlaces: 1).cleanAmount)h"
             } else {
                 return "\(hours)h"
             }
