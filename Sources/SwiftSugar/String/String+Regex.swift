@@ -6,7 +6,25 @@ public extension String {
         let options: String.CompareOptions = caseSensitive ? [.regularExpression] : [.regularExpression, .caseInsensitive]
         return range(of: regex, options: options, range: nil, locale: nil) != nil
     }
+    
+    //TODO: Rename and document this
+    func matches(for regex: String, in text: String) -> [(string: String, position: Int)]? {
+        do {
+            let regex = try NSRegularExpression(pattern: regex, options: [.caseInsensitive])
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            let matches = results.map {
+                (string: String(text[Range($0.range, in: text)!]),
+                 position: $0.range.lowerBound)
+            }
+            return matches.count > 0 ? matches : nil
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return nil
+        }
+    }
 }
+
 
 public extension String {
     
