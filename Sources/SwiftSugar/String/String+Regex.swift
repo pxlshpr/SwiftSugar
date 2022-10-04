@@ -8,13 +8,13 @@ public extension String {
     }
     
     //TODO: Rename and document this
-    func matches(for regex: String, in text: String) -> [(string: String, position: Int)]? {
+    func matches(for regex: String) -> [(string: String, position: Int)]? {
         do {
             let regex = try NSRegularExpression(pattern: regex, options: [.caseInsensitive])
-            let results = regex.matches(in: text,
-                                        range: NSRange(text.startIndex..., in: text))
+            let results = regex.matches(in: self,
+                                        range: NSRange(startIndex..., in: self))
             let matches = results.map {
-                (string: String(text[Range($0.range, in: text)!]),
+                (string: String(self[Range($0.range, in: self)!]),
                  position: $0.range.lowerBound)
             }
             return matches.count > 0 ? matches : nil
