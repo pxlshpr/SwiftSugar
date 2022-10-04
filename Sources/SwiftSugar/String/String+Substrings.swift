@@ -26,4 +26,8 @@ public extension String {
         guard let range = self.range(of: target) else { return self }
         return self.replacingCharacters(in: range, with: replacement)
     }
+    
+    var trimmingWhitespaces: String {
+        trimmingCharacters(in: .whitespaces)
+    }
 }

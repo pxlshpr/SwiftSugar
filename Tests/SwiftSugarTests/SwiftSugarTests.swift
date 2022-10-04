@@ -7,7 +7,10 @@ final class SwiftSugarTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
         
-        
+        let pattern = #"(?:^|[ ]+)([0-9.,]+)"#
+        let text = "Setiap 100g"
+        let groups = text.capturedGroups(using: pattern, allowCapturingEntireString: true)
+        print("We're here")
     }
     
     func matches(for regex: String, in text: String) -> [(string: String, position: Int)] {
