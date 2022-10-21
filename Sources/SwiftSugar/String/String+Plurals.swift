@@ -1,6 +1,6 @@
-#if os(iOS) || os(macOS)
 import Foundation
 
+#if os(iOS) || os(macOS)
 public extension StringProtocol {
     var byWords: [SubSequence] {
         var byWords: [SubSequence] = []
@@ -10,6 +10,7 @@ public extension StringProtocol {
         return byWords
     }
 }
+#endif
 
 public extension String {
     
@@ -36,12 +37,14 @@ public extension String {
             }
         }
         
+#if os(iOS) || os(macOS)
         /// check if we have multiple words and if the last word can be made singular
         if byWords.count > 1, let lastWord = byWords.last {
             return self.replacingLastOccurrence(
                 of: String(lastWord),
                 with: String(lastWord).pluralized(plural))
         }
+#endif
         
         /// return the original string if all else fails
         return self
@@ -100,4 +103,3 @@ public extension String {
         Plurals.first(where: { $0.key == self || $0.value == self })
     }
 }
-#endif
