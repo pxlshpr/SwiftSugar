@@ -1,5 +1,7 @@
+#if os(iOS) || os(macOS)
 import Foundation
 
+@available(macOS 12, *)
 public extension String {
     var isValidURL: Bool {
         let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
@@ -11,3 +13,4 @@ public extension String {
         }
     }
 }
+#endif

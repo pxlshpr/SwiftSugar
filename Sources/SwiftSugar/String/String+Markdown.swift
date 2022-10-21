@@ -1,8 +1,9 @@
+#if os(iOS) || os(macOS)
 import Foundation
 
+@available(macOS 12, *)
 public extension String {
     
-    @available(macOS 12, *)
     func toMarkdown() -> AttributedString {
         do {
             return try AttributedString(
@@ -15,3 +16,4 @@ public extension String {
         }
     }
 }
+#endif

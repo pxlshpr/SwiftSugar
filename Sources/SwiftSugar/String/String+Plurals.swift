@@ -1,5 +1,6 @@
 import Foundation
 
+#if os(iOS) || os(macOS)
 public extension StringProtocol {
     var byWords: [SubSequence] {
         var byWords: [SubSequence] = []
@@ -9,6 +10,7 @@ public extension StringProtocol {
         return byWords
     }
 }
+#endif
 
 public extension String {
     
