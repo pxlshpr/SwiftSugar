@@ -1,6 +1,6 @@
+#if os(iOS) || os(macOS)
 import Foundation
 
-#if os(iOS) || os(macOS)
 public extension StringProtocol {
     var byWords: [SubSequence] {
         var byWords: [SubSequence] = []
@@ -10,7 +10,6 @@ public extension StringProtocol {
         return byWords
     }
 }
-#endif
 
 public extension String {
     
@@ -101,3 +100,4 @@ public extension String {
         Plurals.first(where: { $0.key == self || $0.value == self })
     }
 }
+#endif
