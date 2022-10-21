@@ -1,6 +1,7 @@
 import TabularData
 import Foundation
 
+@available(macOS 12, *)
 public extension DataFrame {
     func write(to url: URL, completion: (() -> Void)? = nil) {
         do {
