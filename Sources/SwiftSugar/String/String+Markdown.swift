@@ -2,6 +2,7 @@ import Foundation
 
 public extension String {
     
+    @available(macOS 12, *)
     func toMarkdown() -> AttributedString {
         do {
             return try AttributedString(
