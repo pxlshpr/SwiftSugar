@@ -1,3 +1,4 @@
+#if canImport(TabularData)
 import TabularData
 import Foundation
 
@@ -21,3 +22,4 @@ public extension DataFrame {
         }
     }
 }
+#endif
