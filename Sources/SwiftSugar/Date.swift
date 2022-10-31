@@ -6,11 +6,15 @@ public extension Date {
     }
     
     var isNowToTheMinute: Bool {
-        day == Date().day
-        && month == Date().month
-        && year == Date().year
-        && hour == Date().hour
-        && minute == Date().minute
+        equalsIgnoringSeconds(Date())
+    }
+
+    func equalsIgnoringSeconds(_ other: Date) -> Bool {
+        day == other.day
+        && month == other.month
+        && year == other.year
+        && hour == other.hour
+        && minute == other.minute
     }
 
     var endOfDay: Date {
