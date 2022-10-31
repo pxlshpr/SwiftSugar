@@ -4,6 +4,14 @@ public extension Date {
     var startOfDay: Date {
         return Calendar.current.startOfDay(for: self)
     }
+    
+    var isNowToTheMinute: Bool {
+        day == Date().day
+        && month == Date().month
+        && year == Date().year
+        && hour == Date().hour
+        && minute == Date().minute
+    }
 
     var endOfDay: Date {
         var components = DateComponents()
