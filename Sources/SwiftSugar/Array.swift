@@ -31,7 +31,7 @@ public extension Array {
         for i in 0..<count-1 {
             let indexToPlace = i + steps
             if indexToPlace < count {
-                self[i] = self[i+4]
+                self[i] = self[indexToPlace]
             } else {
                 self[i] = placeholder
             }
