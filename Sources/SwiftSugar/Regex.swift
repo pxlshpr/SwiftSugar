@@ -11,4 +11,3 @@ public struct NumberRegex {
     
     public static let isFraction = #"^([0-9]+)\/([0-9]+)"#
 }
-

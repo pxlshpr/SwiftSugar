@@ -54,7 +54,7 @@ public extension Array {
     mutating func slide(by delta: Int, placing placeholder: Element) {
         guard delta != 0 else { return }
         if delta < 0 {
-            slideBackwards(by: delta, placing: placeholder)
+            slideBackwards(by: abs(delta), placing: placeholder)
         } else {
             slideForwards(by: delta, placing: placeholder)
         }
