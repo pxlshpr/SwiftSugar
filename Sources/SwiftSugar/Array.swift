@@ -25,3 +25,29 @@ public extension Array where Element: Hashable {
         return nil
     }
 }
+
+public extension Array {
+    mutating func slideForwards(by steps: Int, placing placeholder: Element) {
+        for i in 0..<count-1 {
+            let indexToPlace = i + steps
+            if indexToPlace < count {
+                self[i] = self[i+4]
+            } else {
+                self[i] = placeholder
+            }
+        }
+        self[count-1] = placeholder
+    }
+    
+    mutating func slideBackwards(by steps: Int, placing placeholder: Element) {
+        for i in (1..<count).reversed() {
+            let indexToPlace = i - steps
+            if indexToPlace >= 0 {
+                self[i] = self[indexToPlace]
+            } else {
+                self[i] = placeholder
+            }
+        }
+        self[0] = placeholder
+    }
+}
