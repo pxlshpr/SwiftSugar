@@ -28,6 +28,7 @@ public extension Array where Element: Hashable {
 
 public extension Array {
     mutating func slideForwards(by steps: Int, placing placeholder: Element) {
+        guard steps > 0 else { return }
         for i in 0..<count-1 {
             let indexToPlace = i + steps
             if indexToPlace < count {
@@ -40,6 +41,7 @@ public extension Array {
     }
     
     mutating func slideBackwards(by steps: Int, placing placeholder: Element) {
+        guard steps < 0 else { return }
         for i in (1..<count).reversed() {
             let indexToPlace = i - steps
             if indexToPlace >= 0 {
