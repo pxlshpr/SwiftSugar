@@ -41,7 +41,7 @@ public extension Array {
     }
     
     mutating func slideBackwards(by steps: Int, placing placeholder: Element) {
-        guard steps < 0 else { return }
+        guard steps > 0 else { return }
         for i in (1..<count).reversed() {
             let indexToPlace = i - steps
             if indexToPlace >= 0 {
