@@ -195,6 +195,7 @@ public extension Date {
     }
     
     func h(_ hour: Int, r randomizeComponents: Bool = false) -> Date {
+        guard hour < 24 else { return self }
         let minute: Int = randomizeComponents ? Int.random(in: 0...59) : 0
         let second: Int = randomizeComponents ? Int.random(in: 0...59) : 0
         let date = Calendar.current.date(
@@ -205,7 +206,8 @@ public extension Date {
         return date
     }
     func h(_ h: Int, m: Int, s: Int) -> Date {
-        Calendar.current.date(bySettingHour: h, minute: m, second: s, of: self)!
+        guard h < 24, m < 60, s < 60 else { return self }
+        return Calendar.current.date(bySettingHour: h, minute: m, second: s, of: self)!
     }
 }
 
@@ -220,7 +222,12 @@ public extension Date {
     }
     
     var atNextHour: Date {
-        Calendar.current.date(bySettingHour: hour + 1, minute: 0, second: 0, of: self)!
+        if hour == 23 {
+            let nextDay = self.moveDayBy(1)
+            return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay)!
+        } else {
+            return Calendar.current.date(bySettingHour: hour + 1, minute: 0, second: 0, of: self)!
+        }
     }
     
     var atClosestHour: Date {
