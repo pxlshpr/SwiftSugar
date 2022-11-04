@@ -185,3 +185,55 @@ public func date(hour: Int, minute: Int = 0, of date: Date = Date()) -> Date {
                                  minute: minute,
                                  second: 0, of: actualDate)!
 }
+
+
+public extension Date {
+    var hourString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h a"
+        return formatter.string(from: self)
+    }
+    
+    func h(_ hour: Int, r randomizeComponents: Bool = false) -> Date {
+        let minute: Int = randomizeComponents ? Int.random(in: 0...59) : 0
+        let second: Int = randomizeComponents ? Int.random(in: 0...59) : 0
+        let date = Calendar.current.date(
+            bySettingHour: hour,
+            minute: minute,
+            second: second,
+            of: self)!
+        return date
+    }
+    func h(_ h: Int, m: Int, s: Int) -> Date {
+        Calendar.current.date(bySettingHour: h, minute: m, second: s, of: self)!
+    }
+}
+
+
+//** New **
+public extension Date {
+    var d: Int { day }
+    var h: Int { hour }
+    var m: Int { minute }
+    var atCurrentHour: Date {
+        Calendar.current.date(bySettingHour: hour, minute: 0, second: 0, of: self)!
+    }
+    
+    var atNextHour: Date {
+        Calendar.current.date(bySettingHour: hour + 1, minute: 0, second: 0, of: self)!
+    }
+    
+    var atClosestHour: Date {
+        if m < 30 {
+            return atCurrentHour
+        } else {
+            return atNextHour
+        }
+    }
+    
+    func movingHourBy(_ increment: Int) -> Date {
+        var components = DateComponents()
+        components.hour = increment
+        return Calendar.current.date(byAdding: components, to: self)!
+    }
+}
