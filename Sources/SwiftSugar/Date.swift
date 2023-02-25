@@ -145,7 +145,7 @@ public extension Date {
     var isTomorrow: Bool {
         startOfDay == Date().startOfDay.addingTimeInterval(24 * 3600)
     }
-
+    
     func longDateString(onlyShowYearIfNotCurrent: Bool = false) -> String {
         let formatter = DateFormatter()
         if onlyShowYearIfNotCurrent, self.year == Date().year {
