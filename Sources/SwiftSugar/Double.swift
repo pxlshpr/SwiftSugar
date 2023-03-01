@@ -2,6 +2,10 @@ import Foundation
 
 public extension Double {
     
+    var isInteger: Bool {
+        floor(self) == self
+    }
+
     var clean: String {
         /// round it off to a reasonable number first to avoid numbers like `7.00000000000009` resulting in `7.0`
         let value = self.rounded(toPlaces: 6).truncatingRemainder(dividingBy: 1)
