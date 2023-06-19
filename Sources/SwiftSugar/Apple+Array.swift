@@ -48,7 +48,7 @@ public extension MutableCollection {
     ///   pre-rotation.
     /// - Complexity: O(*n*)
     @discardableResult
-    public mutating func rotate(shiftingToStart middle: Index) -> Index {
+    mutating func rotate(shiftingToStart middle: Index) -> Index {
         var m = middle, s = startIndex
         let e = endIndex
         

@@ -6,7 +6,8 @@ import PackageDescription
 let package = Package(
     name: "SwiftSugar",
     platforms: [
-        .iOS(.v16)
+        .iOS(.v16),
+        .macOS("14.0")
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
