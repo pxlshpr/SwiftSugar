@@ -1,5 +1,5 @@
 #if os(iOS)
-import SwiftUI
+import Foundation
 
 @available(iOS 16, *)
 public func sleepTask(_ seconds: Int, tolerance: Int = 1) async throws {
